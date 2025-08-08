@@ -1,12 +1,12 @@
 {
-  "name": "tolstoy-api",
-  "version": "0.0.1",
+  "name": "tolstoy-sdk",
+  "version": "0.1.0",
   "description": "The official TypeScript library for the Tolstoy API API",
   "author": "Tolstoy API <>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/tolstoy-api-typescript",
+  "repository": "github:joosuhail12/ts-tolstoy-sdk",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
