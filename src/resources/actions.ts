@@ -88,6 +88,32 @@ export class Actions extends APIResource {
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
   }
+
+  /**
+   * Execute a standalone action with provided inputs. This endpoint allows you to
+   * run individual actions outside of workflow contexts.
+   *
+   * @example
+   * ```ts
+   * const response = await client.actions.execute(
+   *   'slack_send_message',
+   *   {
+   *     inputs: {
+   *       channel: '#general',
+   *       text: 'Hello from Tolstoy!',
+   *       user_id: 'U123456',
+   *     },
+   *   },
+   * );
+   * ```
+   */
+  execute(
+    key: string,
+    body: ActionExecuteParams,
+    options?: RequestOptions,
+  ): APIPromise<ActionExecuteResponse> {
+    return this._client.post(path`/actions/${key}/execute`, { body, ...options });
+  }
 }
 
 export interface ActionCreateResponse {
@@ -170,6 +196,24 @@ export namespace ActionListResponse {
 
     version?: number;
   }
+}
+
+export interface ActionExecuteResponse {
+  /**
+   * Action execution result
+   */
+  data?: unknown;
+
+  duration?: number;
+
+  executionId?: string;
+
+  /**
+   * Additional output data from action
+   */
+  outputs?: unknown;
+
+  success?: boolean;
 }
 
 export interface ActionCreateParams {
@@ -290,12 +334,21 @@ export namespace ActionUpdateParams {
   }
 }
 
+export interface ActionExecuteParams {
+  /**
+   * Input parameters matching the action's inputSchema
+   */
+  inputs: unknown;
+}
+
 export declare namespace Actions {
   export {
     type ActionCreateResponse as ActionCreateResponse,
     type ActionRetrieveResponse as ActionRetrieveResponse,
     type ActionListResponse as ActionListResponse,
+    type ActionExecuteResponse as ActionExecuteResponse,
     type ActionCreateParams as ActionCreateParams,
     type ActionUpdateParams as ActionUpdateParams,
+    type ActionExecuteParams as ActionExecuteParams,
   };
 }

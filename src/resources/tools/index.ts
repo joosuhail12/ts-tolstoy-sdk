@@ -1,6 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  Auth,
+  type AuthRetrieveResponse,
+  type AuthDeleteResponse,
+  type AuthUpsertResponse,
+  type AuthUpsertParams,
+} from './auth';
+export {
   Secrets,
   type SecretRetrieveResponse,
   type SecretListResponse,

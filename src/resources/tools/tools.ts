@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as AuthAPI from './auth';
+import { Auth, AuthDeleteResponse, AuthRetrieveResponse, AuthUpsertParams, AuthUpsertResponse } from './auth';
 import * as SecretsAPI from './secrets';
 import {
   SecretListResponse,
@@ -17,6 +19,7 @@ import { path } from '../../internal/utils/path';
 
 export class Tools extends APIResource {
   secrets: SecretsAPI.Secrets = new SecretsAPI.Secrets(this._client);
+  auth: AuthAPI.Auth = new AuthAPI.Auth(this._client);
 
   /**
    * Register a new external tool for use in workflows
@@ -207,6 +210,7 @@ export interface ToolUpdateParams {
 }
 
 Tools.Secrets = Secrets;
+Tools.Auth = Auth;
 
 export declare namespace Tools {
   export {
@@ -224,5 +228,13 @@ export declare namespace Tools {
     type SecretStoreResponse as SecretStoreResponse,
     type SecretRetrieveParams as SecretRetrieveParams,
     type SecretStoreParams as SecretStoreParams,
+  };
+
+  export {
+    Auth as Auth,
+    type AuthRetrieveResponse as AuthRetrieveResponse,
+    type AuthDeleteResponse as AuthDeleteResponse,
+    type AuthUpsertResponse as AuthUpsertResponse,
+    type AuthUpsertParams as AuthUpsertParams,
   };
 }
