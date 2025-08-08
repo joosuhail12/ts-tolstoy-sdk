@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'tolstoy-api/core/api-promise';
+import { APIPromise } from 'tolstoy-sdk/core/api-promise';
 
 import util from 'node:util';
-import TolstoyAPI from 'tolstoy-api';
-import { APIUserAbortError } from 'tolstoy-api';
+import TolstoyAPI from 'tolstoy-sdk';
+import { APIUserAbortError } from 'tolstoy-sdk';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

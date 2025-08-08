@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'tolstoy-api/internal/uploads';
-import { toFile } from 'tolstoy-api/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'tolstoy-sdk/internal/uploads';
+import { toFile } from 'tolstoy-sdk/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

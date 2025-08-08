@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "tolstoy-api/*": ["src/*"],
-      "tolstoy-api": ["src/index.ts"]
+      "tolstoy-sdk/*": ["src/*"],
+      "tolstoy-sdk": ["src/index.ts"]
     },
     "noEmit": true,
 
