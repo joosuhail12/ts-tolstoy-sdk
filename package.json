@@ -1,5 +1,5 @@
 {
-  "name": "tolstoy-api",
+  "name": "tolstoy-sdk",
   "version": "0.0.1",
   "description": "The official TypeScript library for the Tolstoy API API",
   "author": "Tolstoy API <>",

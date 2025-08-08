@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^tolstoy-api$': '<rootDir>/src/index.ts',
-    '^tolstoy-api/(.*)$': '<rootDir>/src/$1',
+    '^tolstoy-sdk$': '<rootDir>/src/index.ts',
+    '^tolstoy-sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

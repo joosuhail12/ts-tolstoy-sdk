@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import TolstoyAPI from 'tolstoy-api';
+import TolstoyAPI from 'tolstoy-sdk';
 
 const client = new TolstoyAPI({
   orgID: 'My Org ID',

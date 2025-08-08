@@ -1,6 +1,6 @@
 import fs from 'fs';
-import type { ResponseLike } from 'tolstoy-api/internal/to-file';
-import { toFile } from 'tolstoy-api/core/uploads';
+import type { ResponseLike } from 'tolstoy-sdk/internal/to-file';
+import { toFile } from 'tolstoy-sdk/core/uploads';
 import { File } from 'node:buffer';
 
 class MyClass {
@@ -97,7 +97,7 @@ describe('missing File error message', () => {
   });
 
   test('is thrown', async () => {
-    const uploads = await import('tolstoy-api/core/uploads');
+    const uploads = await import('tolstoy-sdk/core/uploads');
     await expect(
       uploads.toFile(mockResponse({ url: 'https://example.com/my/audio.mp3' })),
     ).rejects.toMatchInlineSnapshot(

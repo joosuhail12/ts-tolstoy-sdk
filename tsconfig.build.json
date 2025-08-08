@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "tolstoy-api/*": ["dist/src/*"],
-      "tolstoy-api": ["dist/src/index.ts"]
+      "tolstoy-sdk/*": ["dist/src/*"],
+      "tolstoy-sdk": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
