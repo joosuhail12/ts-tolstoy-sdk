@@ -83,6 +83,20 @@ Methods:
 - <code title="delete /tools/{toolId}/secrets">client.tools.secrets.<a href="./src/resources/tools/secrets.ts">delete</a>(toolID) -> void</code>
 - <code title="post /tools/{toolId}/secrets">client.tools.secrets.<a href="./src/resources/tools/secrets.ts">store</a>(toolID, { ...params }) -> SecretStoreResponse</code>
 
+## Auth
+
+Types:
+
+- <code><a href="./src/resources/tools/auth.ts">AuthRetrieveResponse</a></code>
+- <code><a href="./src/resources/tools/auth.ts">AuthDeleteResponse</a></code>
+- <code><a href="./src/resources/tools/auth.ts">AuthUpsertResponse</a></code>
+
+Methods:
+
+- <code title="get /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">retrieve</a>(toolID) -> AuthRetrieveResponse</code>
+- <code title="delete /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">delete</a>(toolID) -> AuthDeleteResponse</code>
+- <code title="post /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">upsert</a>(toolID, { ...params }) -> AuthUpsertResponse</code>
+
 # Actions
 
 Types:
@@ -90,6 +104,7 @@ Types:
 - <code><a href="./src/resources/actions.ts">ActionCreateResponse</a></code>
 - <code><a href="./src/resources/actions.ts">ActionRetrieveResponse</a></code>
 - <code><a href="./src/resources/actions.ts">ActionListResponse</a></code>
+- <code><a href="./src/resources/actions.ts">ActionExecuteResponse</a></code>
 
 Methods:
 
@@ -98,6 +113,7 @@ Methods:
 - <code title="put /actions/{id}">client.actions.<a href="./src/resources/actions.ts">update</a>(id, { ...params }) -> void</code>
 - <code title="get /actions">client.actions.<a href="./src/resources/actions.ts">list</a>() -> ActionListResponse</code>
 - <code title="delete /actions/{id}">client.actions.<a href="./src/resources/actions.ts">delete</a>(id) -> void</code>
+- <code title="post /actions/{key}/execute">client.actions.<a href="./src/resources/actions.ts">execute</a>(key, { ...params }) -> ActionExecuteResponse</code>
 
 # Flows
 
@@ -170,6 +186,17 @@ Methods:
 - <code title="get /webhooks/event-types">client.webhooks.<a href="./src/resources/webhooks.ts">getValidEventTypes</a>() -> WebhookGetValidEventTypesResponse</code>
 - <code title="post /webhooks/{id}/test">client.webhooks.<a href="./src/resources/webhooks.ts">test</a>(id) -> WebhookTestResponse</code>
 - <code title="patch /webhooks/{id}/toggle">client.webhooks.<a href="./src/resources/webhooks.ts">toggle</a>(id) -> WebhookToggleResponse</code>
+
+# Auth
+
+Types:
+
+- <code><a href="./src/resources/auth.ts">AuthOAuthCallbackResponse</a></code>
+
+Methods:
+
+- <code title="get /auth/{toolKey}/callback">client.auth.<a href="./src/resources/auth.ts">oauthCallback</a>(toolKey, { ...params }) -> AuthOAuthCallbackResponse</code>
+- <code title="get /auth/{toolKey}/login">client.auth.<a href="./src/resources/auth.ts">oauthLogin</a>(toolKey, { ...params }) -> void</code>
 
 # Health
 

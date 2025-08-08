@@ -5,9 +5,17 @@ export {
   type ActionCreateResponse,
   type ActionRetrieveResponse,
   type ActionListResponse,
+  type ActionExecuteResponse,
   type ActionCreateParams,
   type ActionUpdateParams,
+  type ActionExecuteParams,
 } from './actions';
+export {
+  Auth,
+  type AuthOAuthCallbackResponse,
+  type AuthOAuthCallbackParams,
+  type AuthOAuthLoginParams,
+} from './auth';
 export {
   ExecutionLogs,
   type ExecutionLogCreateResponse,

@@ -19,11 +19,19 @@ import { APIPromise } from './core/api-promise';
 import {
   ActionCreateParams,
   ActionCreateResponse,
+  ActionExecuteParams,
+  ActionExecuteResponse,
   ActionListResponse,
   ActionRetrieveResponse,
   ActionUpdateParams,
   Actions,
 } from './resources/actions';
+import {
+  Auth,
+  AuthOAuthCallbackParams,
+  AuthOAuthCallbackResponse,
+  AuthOAuthLoginParams,
+} from './resources/auth';
 import {
   ExecutionLogCreateParams,
   ExecutionLogCreateResponse,
@@ -846,6 +854,7 @@ export class TolstoyAPI {
   flows: API.Flows = new API.Flows(this);
   executionLogs: API.ExecutionLogs = new API.ExecutionLogs(this);
   webhooks: API.Webhooks = new API.Webhooks(this);
+  auth: API.Auth = new API.Auth(this);
   health: API.Health = new API.Health(this);
 }
 TolstoyAPI.Status = Status;
@@ -856,6 +865,7 @@ TolstoyAPI.Actions = Actions;
 TolstoyAPI.Flows = Flows;
 TolstoyAPI.ExecutionLogs = ExecutionLogs;
 TolstoyAPI.Webhooks = Webhooks;
+TolstoyAPI.Auth = Auth;
 TolstoyAPI.Health = Health;
 export declare namespace TolstoyAPI {
   export type RequestOptions = Opts.RequestOptions;
@@ -900,8 +910,10 @@ export declare namespace TolstoyAPI {
     type ActionCreateResponse as ActionCreateResponse,
     type ActionRetrieveResponse as ActionRetrieveResponse,
     type ActionListResponse as ActionListResponse,
+    type ActionExecuteResponse as ActionExecuteResponse,
     type ActionCreateParams as ActionCreateParams,
     type ActionUpdateParams as ActionUpdateParams,
+    type ActionExecuteParams as ActionExecuteParams,
   };
 
   export {
@@ -935,6 +947,13 @@ export declare namespace TolstoyAPI {
     type WebhookCreateParams as WebhookCreateParams,
     type WebhookUpdateParams as WebhookUpdateParams,
     type WebhookListParams as WebhookListParams,
+  };
+
+  export {
+    Auth as Auth,
+    type AuthOAuthCallbackResponse as AuthOAuthCallbackResponse,
+    type AuthOAuthCallbackParams as AuthOAuthCallbackParams,
+    type AuthOAuthLoginParams as AuthOAuthLoginParams,
   };
 
   export { Health as Health, type HealthCheckResponse as HealthCheckResponse };
