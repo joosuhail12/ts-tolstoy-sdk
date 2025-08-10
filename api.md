@@ -13,12 +13,10 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/status.ts">StatusRetrieveResponse</a></code>
-- <code><a href="./src/resources/status.ts">StatusRetrieveDetailedResponse</a></code>
 
 Methods:
 
 - <code title="get /status">client.status.<a href="./src/resources/status.ts">retrieve</a>() -> StatusRetrieveResponse</code>
-- <code title="get /status/detailed">client.status.<a href="./src/resources/status.ts">retrieveDetailed</a>() -> StatusRetrieveDetailedResponse</code>
 
 # Organizations
 
@@ -188,15 +186,6 @@ Methods:
 - <code title="patch /webhooks/{id}/toggle">client.webhooks.<a href="./src/resources/webhooks.ts">toggle</a>(id) -> WebhookToggleResponse</code>
 
 # Auth
-
-Types:
-
-- <code><a href="./src/resources/auth.ts">AuthOAuthCallbackResponse</a></code>
-
-Methods:
-
-- <code title="get /auth/{toolKey}/callback">client.auth.<a href="./src/resources/auth.ts">oauthCallback</a>(toolKey, { ...params }) -> AuthOAuthCallbackResponse</code>
-- <code title="get /auth/{toolKey}/login">client.auth.<a href="./src/resources/auth.ts">oauthLogin</a>(toolKey, { ...params }) -> void</code>
 
 # Health
 

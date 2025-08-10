@@ -10,12 +10,7 @@ export {
   type ActionUpdateParams,
   type ActionExecuteParams,
 } from './actions';
-export {
-  Auth,
-  type AuthOAuthCallbackResponse,
-  type AuthOAuthCallbackParams,
-  type AuthOAuthLoginParams,
-} from './auth';
+export { Auth } from './auth';
 export {
   ExecutionLogs,
   type ExecutionLogCreateResponse,
@@ -43,7 +38,7 @@ export {
   type OrganizationCreateParams,
   type OrganizationUpdateParams,
 } from './organizations';
-export { Status, type StatusRetrieveResponse, type StatusRetrieveDetailedResponse } from './status';
+export { Status, type StatusRetrieveResponse } from './status';
 export {
   Tools,
   type ToolCreateResponse,

@@ -26,12 +26,7 @@ import {
   ActionUpdateParams,
   Actions,
 } from './resources/actions';
-import {
-  Auth,
-  AuthOAuthCallbackParams,
-  AuthOAuthCallbackResponse,
-  AuthOAuthLoginParams,
-} from './resources/auth';
+import { Auth } from './resources/auth';
 import {
   ExecutionLogCreateParams,
   ExecutionLogCreateResponse,
@@ -49,7 +44,7 @@ import {
   OrganizationUpdateParams,
   Organizations,
 } from './resources/organizations';
-import { Status, StatusRetrieveDetailedResponse, StatusRetrieveResponse } from './resources/status';
+import { Status, StatusRetrieveResponse } from './resources/status';
 import { GetWelcomeMessageResponse } from './resources/top-level';
 import {
   UserCreateParams,
@@ -872,11 +867,7 @@ export declare namespace TolstoyAPI {
 
   export { type GetWelcomeMessageResponse as GetWelcomeMessageResponse };
 
-  export {
-    Status as Status,
-    type StatusRetrieveResponse as StatusRetrieveResponse,
-    type StatusRetrieveDetailedResponse as StatusRetrieveDetailedResponse,
-  };
+  export { Status as Status, type StatusRetrieveResponse as StatusRetrieveResponse };
 
   export {
     Organizations as Organizations,
@@ -949,12 +940,7 @@ export declare namespace TolstoyAPI {
     type WebhookListParams as WebhookListParams,
   };
 
-  export {
-    Auth as Auth,
-    type AuthOAuthCallbackResponse as AuthOAuthCallbackResponse,
-    type AuthOAuthCallbackParams as AuthOAuthCallbackParams,
-    type AuthOAuthLoginParams as AuthOAuthLoginParams,
-  };
+  export { Auth as Auth };
 
   export { Health as Health, type HealthCheckResponse as HealthCheckResponse };
 }
