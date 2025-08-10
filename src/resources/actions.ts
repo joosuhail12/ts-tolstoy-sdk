@@ -88,26 +88,6 @@ export class Actions extends APIResource {
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
   }
-
-  /**
-   * Execute a standalone action with provided inputs. This endpoint allows you to
-   * run individual actions outside of workflow contexts.
-   *
-   * @example
-   * ```ts
-   * const response = await client.actions.execute(
-   *   'slack_send_message',
-   *   { inputs: {} },
-   * );
-   * ```
-   */
-  execute(
-    key: string,
-    body: ActionExecuteParams,
-    options?: RequestOptions,
-  ): APIPromise<ActionExecuteResponse> {
-    return this._client.post(path`/actions/${key}/execute`, { body, ...options });
-  }
 }
 
 export interface ActionCreateResponse {
@@ -192,24 +172,6 @@ export namespace ActionListResponse {
   }
 }
 
-export interface ActionExecuteResponse {
-  /**
-   * Action execution result
-   */
-  data?: unknown;
-
-  duration?: number;
-
-  executionId?: string;
-
-  /**
-   * Additional output data from action
-   */
-  outputs?: unknown;
-
-  success?: boolean;
-}
-
 export interface ActionCreateParams {
   /**
    * API endpoint URL or path
@@ -271,67 +233,12 @@ export namespace ActionCreateParams {
 
 export interface ActionUpdateParams {}
 
-export interface ActionExecuteParams {
-  /**
-   * Inputs matching the action's enhanced inputSchema. Supports rich validation
-   * including types, formats, enums, visibility conditions, and default values.
-   */
-  inputs: ActionExecuteParams.Inputs;
-}
-
-export namespace ActionExecuteParams {
-  /**
-   * Inputs matching the action's enhanced inputSchema. Supports rich validation
-   * including types, formats, enums, visibility conditions, and default values.
-   */
-  export interface Inputs {
-    /**
-     * Email address of the assignee
-     */
-    assignee_email?: string;
-
-    /**
-     * Due date in YYYY-MM-DD format
-     */
-    due_date?: string;
-
-    /**
-     * Note for urgent tasks (visible only when urgent=true)
-     */
-    escalation_note?: string;
-
-    /**
-     * Priority level from 1-5
-     */
-    priority?: number;
-
-    /**
-     * Current status of the task
-     */
-    status?: 'todo' | 'in-progress' | 'done';
-
-    /**
-     * Task title with length validation
-     */
-    title?: string;
-
-    /**
-     * Whether this task is urgent
-     */
-    urgent?: boolean;
-
-    [k: string]: unknown;
-  }
-}
-
 export declare namespace Actions {
   export {
     type ActionCreateResponse as ActionCreateResponse,
     type ActionRetrieveResponse as ActionRetrieveResponse,
     type ActionListResponse as ActionListResponse,
-    type ActionExecuteResponse as ActionExecuteResponse,
     type ActionCreateParams as ActionCreateParams,
     type ActionUpdateParams as ActionUpdateParams,
-    type ActionExecuteParams as ActionExecuteParams,
   };
 }

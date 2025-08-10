@@ -19,8 +19,6 @@ import { APIPromise } from './core/api-promise';
 import {
   ActionCreateParams,
   ActionCreateResponse,
-  ActionExecuteParams,
-  ActionExecuteResponse,
   ActionListResponse,
   ActionRetrieveResponse,
   ActionUpdateParams,
@@ -901,10 +899,8 @@ export declare namespace TolstoyAPI {
     type ActionCreateResponse as ActionCreateResponse,
     type ActionRetrieveResponse as ActionRetrieveResponse,
     type ActionListResponse as ActionListResponse,
-    type ActionExecuteResponse as ActionExecuteResponse,
     type ActionCreateParams as ActionCreateParams,
     type ActionUpdateParams as ActionUpdateParams,
-    type ActionExecuteParams as ActionExecuteParams,
   };
 
   export {
