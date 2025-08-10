@@ -27,13 +27,9 @@ export class Tools extends APIResource {
    * @example
    * ```ts
    * const tool = await client.tools.create({
-   *   configuration: {
-   *     baseUrl: 'https://hooks.slack.com',
-   *     timeout: 5000,
-   *     retries: 3,
-   *   },
+   *   authType: 'apiKey',
+   *   baseUrl: 'https://hooks.slack.com/services',
    *   name: 'Slack Notifier',
-   *   type: 'notification',
    * });
    * ```
    */
@@ -100,19 +96,17 @@ export class Tools extends APIResource {
 export interface ToolCreateResponse {
   id?: string;
 
-  configuration?: unknown;
+  authType?: string;
+
+  baseUrl?: string;
 
   createdAt?: string;
 
-  description?: string;
-
   name?: string;
 
-  type?: string;
+  orgId?: string;
 
   updatedAt?: string;
-
-  version?: string;
 }
 
 export interface ToolRetrieveResponse {
@@ -157,29 +151,19 @@ export namespace ToolListResponse {
 
 export interface ToolCreateParams {
   /**
-   * Tool-specific configuration
+   * Authentication type (apiKey, oauth2, basic)
    */
-  configuration: unknown;
+  authType: string;
+
+  /**
+   * Base URL for the tool API
+   */
+  baseUrl: string;
 
   /**
    * Tool name
    */
   name: string;
-
-  /**
-   * Tool type/category
-   */
-  type: 'notification' | 'api' | 'database' | 'webhook' | 'email';
-
-  /**
-   * Tool description
-   */
-  description?: string;
-
-  /**
-   * Tool version
-   */
-  version?: string;
 }
 
 export interface ToolUpdateParams {
