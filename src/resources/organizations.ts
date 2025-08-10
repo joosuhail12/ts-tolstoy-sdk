@@ -142,22 +142,7 @@ export interface OrganizationCreateParams {
   settings?: unknown;
 }
 
-export interface OrganizationUpdateParams {
-  /**
-   * Organization description
-   */
-  description?: string;
-
-  /**
-   * Organization name
-   */
-  name?: string;
-
-  /**
-   * Organization settings
-   */
-  settings?: unknown;
-}
+export interface OrganizationUpdateParams {}
 
 export declare namespace Organizations {
   export {

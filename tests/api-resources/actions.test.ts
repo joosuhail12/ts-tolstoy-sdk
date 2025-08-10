@@ -97,9 +97,7 @@ describe('resource actions', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('execute: only required params', async () => {
-    const responsePromise = client.actions.execute('slack_send_message', {
-      inputs: { channel: '#general', text: 'Hello from Tolstoy!', user_id: 'U123456' },
-    });
+    const responsePromise = client.actions.execute('slack_send_message', { inputs: {} });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -112,7 +110,15 @@ describe('resource actions', () => {
   // skipped: tests are disabled for the time being
   test.skip('execute: required and optional params', async () => {
     const response = await client.actions.execute('slack_send_message', {
-      inputs: { channel: '#general', text: 'Hello from Tolstoy!', user_id: 'U123456' },
+      inputs: {
+        assignee_email: 'user@example.com',
+        due_date: '2024-01-15',
+        escalation_note: 'This needs immediate attention',
+        priority: 3,
+        status: 'in-progress',
+        title: 'My Task Title',
+        urgent: true,
+      },
     });
   });
 });

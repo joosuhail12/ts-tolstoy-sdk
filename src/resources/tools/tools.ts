@@ -166,32 +166,7 @@ export interface ToolCreateParams {
   name: string;
 }
 
-export interface ToolUpdateParams {
-  /**
-   * Tool-specific configuration
-   */
-  configuration?: unknown;
-
-  /**
-   * Tool description
-   */
-  description?: string;
-
-  /**
-   * Tool name
-   */
-  name?: string;
-
-  /**
-   * Tool type/category
-   */
-  type?: 'notification' | 'api' | 'database' | 'webhook' | 'email';
-
-  /**
-   * Tool version
-   */
-  version?: string;
-}
+export interface ToolUpdateParams {}
 
 Tools.Secrets = Secrets;
 Tools.Auth = Auth;

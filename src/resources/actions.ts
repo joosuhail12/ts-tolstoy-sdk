@@ -97,13 +97,7 @@ export class Actions extends APIResource {
    * ```ts
    * const response = await client.actions.execute(
    *   'slack_send_message',
-   *   {
-   *     inputs: {
-   *       channel: '#general',
-   *       text: 'Hello from Tolstoy!',
-   *       user_id: 'U123456',
-   *     },
-   *   },
+   *   { inputs: {} },
    * );
    * ```
    */
@@ -275,70 +269,59 @@ export namespace ActionCreateParams {
   }
 }
 
-export interface ActionUpdateParams {
-  /**
-   * API endpoint URL or path
-   */
-  endpoint?: string;
-
-  /**
-   * Conditional execution rules (optional)
-   */
-  executeIf?: unknown;
-
-  /**
-   * HTTP headers required for the action
-   */
-  headers?: unknown;
-
-  /**
-   * Schema defining input parameters for the action
-   */
-  inputSchema?: Array<ActionUpdateParams.InputSchema>;
-
-  /**
-   * Unique identifier for the action
-   */
-  key?: string;
-
-  /**
-   * HTTP method for the action
-   */
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-
-  /**
-   * Human-readable action name
-   */
-  name?: string;
-
-  /**
-   * ID of the associated tool
-   */
-  toolId?: string;
-
-  /**
-   * Action version number
-   */
-  version?: number;
-}
-
-export namespace ActionUpdateParams {
-  export interface InputSchema {
-    description?: string;
-
-    name?: string;
-
-    required?: boolean;
-
-    type?: string;
-  }
-}
+export interface ActionUpdateParams {}
 
 export interface ActionExecuteParams {
   /**
-   * Input parameters matching the action's inputSchema
+   * Inputs matching the action's enhanced inputSchema. Supports rich validation
+   * including types, formats, enums, visibility conditions, and default values.
    */
-  inputs: unknown;
+  inputs: ActionExecuteParams.Inputs;
+}
+
+export namespace ActionExecuteParams {
+  /**
+   * Inputs matching the action's enhanced inputSchema. Supports rich validation
+   * including types, formats, enums, visibility conditions, and default values.
+   */
+  export interface Inputs {
+    /**
+     * Email address of the assignee
+     */
+    assignee_email?: string;
+
+    /**
+     * Due date in YYYY-MM-DD format
+     */
+    due_date?: string;
+
+    /**
+     * Note for urgent tasks (visible only when urgent=true)
+     */
+    escalation_note?: string;
+
+    /**
+     * Priority level from 1-5
+     */
+    priority?: number;
+
+    /**
+     * Current status of the task
+     */
+    status?: 'todo' | 'in-progress' | 'done';
+
+    /**
+     * Task title with length validation
+     */
+    title?: string;
+
+    /**
+     * Whether this task is urgent
+     */
+    urgent?: boolean;
+
+    [k: string]: unknown;
+  }
 }
 
 export declare namespace Actions {
