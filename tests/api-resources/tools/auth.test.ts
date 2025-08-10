@@ -35,7 +35,10 @@ describe('resource auth', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('upsert: only required params', async () => {
-    const responsePromise = client.tools.auth.upsert('tool-123', { config: {}, type: 'apiKey' });
+    const responsePromise = client.tools.auth.upsert('tool-123', {
+      config: { headerName: 'Authorization', headerValue: 'Bearer sk-1234567890abcdef' },
+      type: 'apiKey',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -47,6 +50,9 @@ describe('resource auth', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('upsert: required and optional params', async () => {
-    const response = await client.tools.auth.upsert('tool-123', { config: {}, type: 'apiKey' });
+    const response = await client.tools.auth.upsert('tool-123', {
+      config: { headerName: 'Authorization', headerValue: 'Bearer sk-1234567890abcdef' },
+      type: 'apiKey',
+    });
   });
 });

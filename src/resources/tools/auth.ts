@@ -34,14 +34,21 @@ export class Auth extends APIResource {
 
   /**
    * Configures authentication settings (API Key or OAuth2) for a specific tool
-   * within an organization. This endpoint supports both creating new configurations
-   * and updating existing ones.
+   * within an organization. API Key auth requires headerName and headerValue. OAuth2
+   * auth requires clientId, clientSecret, and accessToken. A default callback URL is
+   * automatically added for OAuth2 configurations.
    *
    * @example
    * ```ts
    * const response = await client.tools.auth.upsert(
    *   'tool-123',
-   *   { config: {}, type: 'apiKey' },
+   *   {
+   *     config: {
+   *       headerName: 'Authorization',
+   *       headerValue: 'Bearer sk-1234567890abcdef',
+   *     },
+   *     type: 'apiKey',
+   *   },
    * );
    * ```
    */
@@ -138,14 +145,36 @@ export interface AuthUpsertResponse {
 
 export interface AuthUpsertParams {
   /**
-   * Authentication configuration JSON
+   * Authentication configuration (structure depends on type)
    */
-  config: unknown;
+  config: AuthUpsertParams.APIKeyConfiguration | AuthUpsertParams.OAuth2Configuration;
 
   /**
    * Type of authentication configuration
    */
   type: 'apiKey' | 'oauth2';
+}
+
+export namespace AuthUpsertParams {
+  export interface APIKeyConfiguration {
+    headerName: string;
+
+    headerValue: string;
+  }
+
+  export interface OAuth2Configuration {
+    accessToken: string;
+
+    clientId: string;
+
+    clientSecret: string;
+
+    expiresAt?: string;
+
+    refreshToken?: string;
+
+    scopes?: string;
+  }
 }
 
 export declare namespace Auth {
