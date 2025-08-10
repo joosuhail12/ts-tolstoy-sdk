@@ -13,6 +13,7 @@ describe('resource webhooks', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.webhooks.create({
       eventTypes: ['flow.execution.completed', 'flow.execution.failed'],
+      name: 'Production Notifications',
       url: 'https://api.example.com/webhook',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -28,8 +29,10 @@ describe('resource webhooks', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.webhooks.create({
       eventTypes: ['flow.execution.completed', 'flow.execution.failed'],
+      name: 'Production Notifications',
       url: 'https://api.example.com/webhook',
       enabled: true,
+      headers: { 'X-API-Key': 'your-api-key', 'Content-Type': 'application/json' },
       secret: 'webhook_secret_123',
     });
   });

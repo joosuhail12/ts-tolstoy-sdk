@@ -152,27 +152,7 @@ export interface UserCreateParams {
   role?: 'admin' | 'member' | 'viewer';
 }
 
-export interface UserUpdateParams {
-  /**
-   * User email address
-   */
-  email?: string;
-
-  /**
-   * User full name
-   */
-  name?: string;
-
-  /**
-   * User profile information
-   */
-  profile?: unknown;
-
-  /**
-   * User role
-   */
-  role?: 'admin' | 'member' | 'viewer';
-}
+export interface UserUpdateParams {}
 
 export declare namespace Users {
   export {

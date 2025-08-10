@@ -17,20 +17,9 @@ export class ExecutionLogs extends APIResource {
    *   executionId: 'exec_xyz789',
    *   flowId: 'flow_abc123',
    *   inputs: {
-   *     stepName: 'Send Slack Notification',
-   *     stepType: 'action',
-   *     config: {
-   *       actionKey: 'slack_send_message',
-   *       parameters: {
-   *         channel: '#general',
-   *         message: 'Workflow completed successfully',
-   *       },
-   *     },
-   *     variables: {
-   *       userId: 'user_123',
-   *       timestamp: '2024-01-15T10:30:00Z',
-   *     },
-   *     stepOutputs: {},
+   *     channel: '#general',
+   *     message: 'Workflow started',
+   *     userId: 'user_123',
    *   },
    *   status: 'completed',
    *   stepKey: 'send_notification',
@@ -189,27 +178,15 @@ export interface ExecutionLogCreateParams {
   inputs: unknown;
 
   /**
-   * Execution status of the step
+   * Execution status
    */
-  status: 'pending' | 'running' | 'completed' | 'failed' | 'skipped';
+  status: 'pending' | 'running' | 'completed' | 'failed';
 
   /**
    * Unique identifier for the step within the workflow
    */
   stepKey: string;
 
-  /**
-   * Error information if step failed (optional)
-   */
-  error?: unknown;
-
-  /**
-   * Output data produced by the step (optional)
-   */
-  outputs?: unknown;
-}
-
-export interface ExecutionLogUpdateParams {
   /**
    * Error information if step failed
    */
@@ -219,12 +196,9 @@ export interface ExecutionLogUpdateParams {
    * Output data produced by the step
    */
   outputs?: unknown;
-
-  /**
-   * Updated execution status
-   */
-  status?: 'pending' | 'running' | 'completed' | 'failed' | 'skipped';
 }
+
+export interface ExecutionLogUpdateParams {}
 
 export declare namespace ExecutionLogs {
   export {

@@ -17,6 +17,7 @@ export class Webhooks extends APIResource {
    *     'flow.execution.completed',
    *     'flow.execution.failed',
    *   ],
+   *   name: 'Production Notifications',
    *   url: 'https://api.example.com/webhook',
    * });
    * ```
@@ -199,6 +200,11 @@ export interface WebhookCreateParams {
   eventTypes: Array<string>;
 
   /**
+   * Webhook name
+   */
+  name: string;
+
+  /**
    * Webhook endpoint URL
    */
   url: string;
@@ -209,32 +215,17 @@ export interface WebhookCreateParams {
   enabled?: boolean;
 
   /**
-   * Optional secret for webhook signature verification
+   * Additional HTTP headers to include with webhook requests
    */
-  secret?: string;
-}
-
-export interface WebhookUpdateParams {
-  /**
-   * Whether the webhook is active
-   */
-  enabled?: boolean;
-
-  /**
-   * Event types to subscribe to
-   */
-  eventTypes?: Array<string>;
+  headers?: unknown;
 
   /**
    * Optional secret for webhook signature verification
    */
   secret?: string;
-
-  /**
-   * Webhook endpoint URL
-   */
-  url?: string;
 }
+
+export interface WebhookUpdateParams {}
 
 export interface WebhookListParams {
   /**

@@ -14,16 +14,7 @@ describe('resource executionLogs', () => {
     const responsePromise = client.executionLogs.create({
       executionId: 'exec_xyz789',
       flowId: 'flow_abc123',
-      inputs: {
-        stepName: 'Send Slack Notification',
-        stepType: 'action',
-        config: {
-          actionKey: 'slack_send_message',
-          parameters: { channel: '#general', message: 'Workflow completed successfully' },
-        },
-        variables: { userId: 'user_123', timestamp: '2024-01-15T10:30:00Z' },
-        stepOutputs: {},
-      },
+      inputs: { channel: '#general', message: 'Workflow started', userId: 'user_123' },
       status: 'completed',
       stepKey: 'send_notification',
     });
@@ -41,19 +32,10 @@ describe('resource executionLogs', () => {
     const response = await client.executionLogs.create({
       executionId: 'exec_xyz789',
       flowId: 'flow_abc123',
-      inputs: {
-        stepName: 'Send Slack Notification',
-        stepType: 'action',
-        config: {
-          actionKey: 'slack_send_message',
-          parameters: { channel: '#general', message: 'Workflow completed successfully' },
-        },
-        variables: { userId: 'user_123', timestamp: '2024-01-15T10:30:00Z' },
-        stepOutputs: {},
-      },
+      inputs: { channel: '#general', message: 'Workflow started', userId: 'user_123' },
       status: 'completed',
       stepKey: 'send_notification',
-      error: { message: 'Channel not found', code: 'CHANNEL_NOT_FOUND', stack: 'Error stack trace...' },
+      error: { message: 'API rate limit exceeded', code: 'RATE_LIMIT', retryAfter: 3600 },
       outputs: { messageId: 'msg_456', timestamp: '2024-01-15T10:30:05Z', success: true },
     });
   });

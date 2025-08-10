@@ -217,32 +217,7 @@ export namespace FlowCreateParams {
   }
 }
 
-export interface FlowUpdateParams {
-  /**
-   * Flow description
-   */
-  description?: string;
-
-  /**
-   * Flow name
-   */
-  name?: string;
-
-  /**
-   * Updated flow execution settings
-   */
-  settings?: unknown;
-
-  /**
-   * Updated workflow steps definition
-   */
-  steps?: Array<unknown>;
-
-  /**
-   * Flow version number
-   */
-  version?: number;
-}
+export interface FlowUpdateParams {}
 
 export interface FlowExecuteParams {
   /**
