@@ -102,7 +102,6 @@ Types:
 - <code><a href="./src/resources/actions.ts">ActionCreateResponse</a></code>
 - <code><a href="./src/resources/actions.ts">ActionRetrieveResponse</a></code>
 - <code><a href="./src/resources/actions.ts">ActionListResponse</a></code>
-- <code><a href="./src/resources/actions.ts">ActionExecuteResponse</a></code>
 
 Methods:
 
@@ -111,7 +110,6 @@ Methods:
 - <code title="put /actions/{id}">client.actions.<a href="./src/resources/actions.ts">update</a>(id) -> void</code>
 - <code title="get /actions">client.actions.<a href="./src/resources/actions.ts">list</a>() -> ActionListResponse</code>
 - <code title="delete /actions/{id}">client.actions.<a href="./src/resources/actions.ts">delete</a>(id) -> void</code>
-- <code title="post /actions/{key}/execute">client.actions.<a href="./src/resources/actions.ts">execute</a>(key, { ...params }) -> ActionExecuteResponse</code>
 
 # Flows
 

@@ -5,10 +5,8 @@ export {
   type ActionCreateResponse,
   type ActionRetrieveResponse,
   type ActionListResponse,
-  type ActionExecuteResponse,
   type ActionCreateParams,
   type ActionUpdateParams,
-  type ActionExecuteParams,
 } from './actions';
 export { Auth } from './auth';
 export {
