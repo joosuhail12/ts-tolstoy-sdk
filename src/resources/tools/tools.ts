@@ -2,7 +2,15 @@
 
 import { APIResource } from '../../core/resource';
 import * as AuthAPI from './auth';
-import { Auth, AuthDeleteResponse, AuthRetrieveResponse, AuthUpsertParams, AuthUpsertResponse } from './auth';
+import {
+  Auth,
+  AuthDeleteParams,
+  AuthDeleteResponse,
+  AuthRetrieveParams,
+  AuthRetrieveResponse,
+  AuthUpsertParams,
+  AuthUpsertResponse,
+} from './auth';
 import * as SecretsAPI from './secrets';
 import {
   SecretListResponse,
@@ -194,6 +202,8 @@ export declare namespace Tools {
     type AuthRetrieveResponse as AuthRetrieveResponse,
     type AuthDeleteResponse as AuthDeleteResponse,
     type AuthUpsertResponse as AuthUpsertResponse,
+    type AuthRetrieveParams as AuthRetrieveParams,
+    type AuthDeleteParams as AuthDeleteParams,
     type AuthUpsertParams as AuthUpsertParams,
   };
 }

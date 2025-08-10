@@ -91,8 +91,8 @@ Types:
 
 Methods:
 
-- <code title="get /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">retrieve</a>(toolID) -> AuthRetrieveResponse</code>
-- <code title="delete /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">delete</a>(toolID) -> AuthDeleteResponse</code>
+- <code title="get /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">retrieve</a>(toolID, { ...params }) -> AuthRetrieveResponse</code>
+- <code title="delete /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">delete</a>(toolID, { ...params }) -> AuthDeleteResponse</code>
 - <code title="post /tools/{toolId}/auth">client.tools.auth.<a href="./src/resources/tools/auth.ts">upsert</a>(toolID, { ...params }) -> AuthUpsertResponse</code>
 
 # Actions
