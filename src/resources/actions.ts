@@ -15,11 +15,6 @@ export class Actions extends APIResource {
    * ```ts
    * const action = await client.actions.create({
    *   endpoint: '/api/chat.postMessage',
-   *   headers: {
-   *     'Content-Type': 'application/json',
-   *     Authorization: 'Bearer {token}',
-   *   },
-   *   inputSchema: [{}, {}],
    *   key: 'slack_send_message',
    *   method: 'POST',
    *   name: 'Send Slack Message',
@@ -179,16 +174,6 @@ export interface ActionCreateParams {
   endpoint: string;
 
   /**
-   * HTTP headers required for the action
-   */
-  headers: unknown;
-
-  /**
-   * Schema defining input parameters for the action
-   */
-  inputSchema: Array<ActionCreateParams.InputSchema>;
-
-  /**
    * Unique identifier for the action
    */
   key: string;
@@ -212,6 +197,17 @@ export interface ActionCreateParams {
    * Conditional execution rules (optional)
    */
   executeIf?: unknown;
+
+  /**
+   * HTTP headers for the action (optional, defaults to empty object)
+   */
+  headers?: unknown;
+
+  /**
+   * Schema defining input parameters for the action (optional, defaults to empty
+   * array)
+   */
+  inputSchema?: Array<ActionCreateParams.InputSchema>;
 
   /**
    * Action version number
