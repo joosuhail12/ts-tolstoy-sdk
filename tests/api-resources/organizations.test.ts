@@ -23,11 +23,7 @@ describe('resource organizations', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.organizations.create({
-      name: 'Acme Corp',
-      description: 'Leading technology company',
-      settings: { timezone: 'UTC', currency: 'USD' },
-    });
+    const response = await client.organizations.create({ name: 'Acme Corp' });
   });
 
   // skipped: tests are disabled for the time being
