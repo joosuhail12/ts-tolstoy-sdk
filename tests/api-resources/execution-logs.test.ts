@@ -17,6 +17,7 @@ describe('resource executionLogs', () => {
       inputs: { channel: '#general', message: 'Workflow started', userId: 'user_123' },
       status: 'completed',
       stepKey: 'send_notification',
+      userId: 'user_abc123',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -35,6 +36,7 @@ describe('resource executionLogs', () => {
       inputs: { channel: '#general', message: 'Workflow started', userId: 'user_123' },
       status: 'completed',
       stepKey: 'send_notification',
+      userId: 'user_abc123',
       error: { message: 'API rate limit exceeded', code: 'RATE_LIMIT', retryAfter: 3600 },
       outputs: { messageId: 'msg_456', timestamp: '2024-01-15T10:30:05Z', success: true },
     });

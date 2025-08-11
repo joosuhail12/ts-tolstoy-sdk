@@ -24,10 +24,7 @@ export class Flows extends APIResource {
    *
    * @example
    * ```ts
-   * const flow = await client.flows.create({
-   *   name: 'User Onboarding Flow',
-   *   steps: [{}],
-   * });
+   * const flow = await client.flows.create({ steps: [{}] });
    * ```
    */
   create(body: FlowCreateParams, options?: RequestOptions): APIPromise<FlowCreateResponse> {
@@ -180,24 +177,9 @@ export interface FlowGetMetricsResponse {
 
 export interface FlowCreateParams {
   /**
-   * Flow name
-   */
-  name: string;
-
-  /**
    * Workflow steps definition
    */
   steps: Array<FlowCreateParams.Step>;
-
-  /**
-   * Flow description
-   */
-  description?: string;
-
-  /**
-   * Flow execution settings
-   */
-  settings?: unknown;
 
   /**
    * Flow version number

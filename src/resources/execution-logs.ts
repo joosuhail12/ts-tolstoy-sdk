@@ -23,6 +23,7 @@ export class ExecutionLogs extends APIResource {
    *   },
    *   status: 'completed',
    *   stepKey: 'send_notification',
+   *   userId: 'user_abc123',
    * });
    * ```
    */
@@ -186,6 +187,11 @@ export interface ExecutionLogCreateParams {
    * Unique identifier for the step within the workflow
    */
   stepKey: string;
+
+  /**
+   * ID of the user executing the workflow
+   */
+  userId: string;
 
   /**
    * Error information if step failed
