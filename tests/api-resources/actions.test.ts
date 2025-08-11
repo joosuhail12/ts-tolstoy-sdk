@@ -13,8 +13,6 @@ describe('resource actions', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.actions.create({
       endpoint: '/api/chat.postMessage',
-      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer {token}' },
-      inputSchema: [{}, {}],
       key: 'slack_send_message',
       method: 'POST',
       name: 'Send Slack Message',
@@ -33,16 +31,16 @@ describe('resource actions', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.actions.create({
       endpoint: '/api/chat.postMessage',
-      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer {token}' },
-      inputSchema: [
-        { description: 'Slack channel ID', name: 'channel', required: true, type: 'string' },
-        { description: 'Message content', name: 'text', required: true, type: 'string' },
-      ],
       key: 'slack_send_message',
       method: 'POST',
       name: 'Send Slack Message',
       toolId: 'tool_slack_123',
       executeIf: { 'user.role': 'admin' },
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer {token}' },
+      inputSchema: [
+        { description: 'Slack channel ID', name: 'channel', required: true, type: 'string' },
+        { description: 'Message content', name: 'text', required: true, type: 'string' },
+      ],
       version: 1,
     });
   });
