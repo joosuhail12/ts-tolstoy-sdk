@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('resource organizations', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.organizations.create({ name: 'Acme Corp' });
     const rawResponse = await responsePromise.asResponse();
@@ -21,12 +21,12 @@ describe('resource organizations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.organizations.create({ name: 'Acme Corp' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.organizations.retrieve('org_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -38,7 +38,7 @@ describe('resource organizations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.organizations.update('org_abc123', {});
     const rawResponse = await responsePromise.asResponse();
@@ -50,7 +50,7 @@ describe('resource organizations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.organizations.list();
     const rawResponse = await responsePromise.asResponse();
@@ -62,7 +62,7 @@ describe('resource organizations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.organizations.delete('org_abc123');
     const rawResponse = await responsePromise.asResponse();

@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('resource tools', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.tools.create({
       authType: 'apiKey',
@@ -25,7 +25,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.tools.create({
       authType: 'apiKey',
@@ -34,7 +34,7 @@ describe('resource tools', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.tools.retrieve('tool_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -46,7 +46,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.tools.update('tool_abc123', {});
     const rawResponse = await responsePromise.asResponse();
@@ -58,7 +58,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.tools.list();
     const rawResponse = await responsePromise.asResponse();
@@ -70,7 +70,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.tools.delete('tool_abc123');
     const rawResponse = await responsePromise.asResponse();

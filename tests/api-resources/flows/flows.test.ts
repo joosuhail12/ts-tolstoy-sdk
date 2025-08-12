@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('resource flows', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.flows.create({ steps: [{}] });
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource flows', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.flows.create({
       steps: [
@@ -36,7 +36,7 @@ describe('resource flows', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.flows.retrieve('flow_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -48,7 +48,7 @@ describe('resource flows', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.flows.update('flow_abc123', {});
     const rawResponse = await responsePromise.asResponse();
@@ -60,7 +60,7 @@ describe('resource flows', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.flows.list();
     const rawResponse = await responsePromise.asResponse();
@@ -72,7 +72,7 @@ describe('resource flows', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.flows.delete('flow_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -84,7 +84,7 @@ describe('resource flows', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('execute', async () => {
     const responsePromise = client.flows.execute('flow_abc123', {});
     const rawResponse = await responsePromise.asResponse();
@@ -96,7 +96,7 @@ describe('resource flows', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getMetrics', async () => {
     const responsePromise = client.flows.getMetrics('flow_abc123');
     const rawResponse = await responsePromise.asResponse();
