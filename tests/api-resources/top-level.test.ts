@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('top level methods', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getWelcomeMessage', async () => {
     const responsePromise = client.getWelcomeMessage();
     const rawResponse = await responsePromise.asResponse();
