@@ -6,7 +6,7 @@ import { RequestOptions } from '../internal/request-options';
 
 export class Health extends APIResource {
   /**
-   * Simple health check endpoint (deprecated - use /status instead)
+   * Simple health check endpoint for load balancers and monitoring systems
    */
   check(options?: RequestOptions): APIPromise<HealthCheckResponse> {
     return this._client.get('/health', options);
@@ -15,8 +15,6 @@ export class Health extends APIResource {
 
 export interface HealthCheckResponse {
   status?: string;
-
-  timestamp?: string;
 }
 
 export declare namespace Health {

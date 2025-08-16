@@ -5,6 +5,8 @@ export {
   type AuthRetrieveResponse,
   type AuthDeleteResponse,
   type AuthUpsertResponse,
+  type AuthRetrieveParams,
+  type AuthDeleteParams,
   type AuthUpsertParams,
 } from './auth';
 export {

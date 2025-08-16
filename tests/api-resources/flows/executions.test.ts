@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('resource executions', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.flows.executions.retrieve('exec_abc123', { id: 'flow_abc123' });
     const rawResponse = await responsePromise.asResponse();
@@ -21,12 +21,12 @@ describe('resource executions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.flows.executions.retrieve('exec_abc123', { id: 'flow_abc123' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.flows.executions.list('flow_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -38,7 +38,7 @@ describe('resource executions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: only required params', async () => {
     const responsePromise = client.flows.executions.cancel('exec_abc123', { id: 'flow_abc123' });
     const rawResponse = await responsePromise.asResponse();
@@ -50,12 +50,12 @@ describe('resource executions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: required and optional params', async () => {
     const response = await client.flows.executions.cancel('exec_abc123', { id: 'flow_abc123' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retry: only required params', async () => {
     const responsePromise = client.flows.executions.retry('exec_abc123', { id: 'flow_abc123' });
     const rawResponse = await responsePromise.asResponse();
@@ -67,7 +67,7 @@ describe('resource executions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retry: required and optional params', async () => {
     const response = await client.flows.executions.retry('exec_abc123', { id: 'flow_abc123' });
   });

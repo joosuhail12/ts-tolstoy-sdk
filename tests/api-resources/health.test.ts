@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('resource health', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('check', async () => {
     const responsePromise = client.health.check();
     const rawResponse = await responsePromise.asResponse();

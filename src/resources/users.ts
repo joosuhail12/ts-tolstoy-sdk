@@ -14,7 +14,6 @@ export class Users extends APIResource {
    * ```ts
    * const user = await client.users.create({
    *   email: 'john.doe@example.com',
-   *   name: 'John Doe',
    * });
    * ```
    */
@@ -135,44 +134,9 @@ export interface UserCreateParams {
    * User email address
    */
   email: string;
-
-  /**
-   * User full name
-   */
-  name: string;
-
-  /**
-   * User profile information
-   */
-  profile?: unknown;
-
-  /**
-   * User role
-   */
-  role?: 'admin' | 'member' | 'viewer';
 }
 
-export interface UserUpdateParams {
-  /**
-   * User email address
-   */
-  email?: string;
-
-  /**
-   * User full name
-   */
-  name?: string;
-
-  /**
-   * User profile information
-   */
-  profile?: unknown;
-
-  /**
-   * User role
-   */
-  role?: 'admin' | 'member' | 'viewer';
-}
+export interface UserUpdateParams {}
 
 export declare namespace Users {
   export {

@@ -15,11 +15,6 @@ export class Actions extends APIResource {
    * ```ts
    * const action = await client.actions.create({
    *   endpoint: '/api/chat.postMessage',
-   *   headers: {
-   *     'Content-Type': 'application/json',
-   *     Authorization: 'Bearer {token}',
-   *   },
-   *   inputSchema: [{}, {}],
    *   key: 'slack_send_message',
    *   method: 'POST',
    *   name: 'Send Slack Message',
@@ -87,32 +82,6 @@ export class Actions extends APIResource {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
-  }
-
-  /**
-   * Execute a standalone action with provided inputs. This endpoint allows you to
-   * run individual actions outside of workflow contexts.
-   *
-   * @example
-   * ```ts
-   * const response = await client.actions.execute(
-   *   'slack_send_message',
-   *   {
-   *     inputs: {
-   *       channel: '#general',
-   *       text: 'Hello from Tolstoy!',
-   *       user_id: 'U123456',
-   *     },
-   *   },
-   * );
-   * ```
-   */
-  execute(
-    key: string,
-    body: ActionExecuteParams,
-    options?: RequestOptions,
-  ): APIPromise<ActionExecuteResponse> {
-    return this._client.post(path`/actions/${key}/execute`, { body, ...options });
   }
 }
 
@@ -198,39 +167,11 @@ export namespace ActionListResponse {
   }
 }
 
-export interface ActionExecuteResponse {
-  /**
-   * Action execution result
-   */
-  data?: unknown;
-
-  duration?: number;
-
-  executionId?: string;
-
-  /**
-   * Additional output data from action
-   */
-  outputs?: unknown;
-
-  success?: boolean;
-}
-
 export interface ActionCreateParams {
   /**
    * API endpoint URL or path
    */
   endpoint: string;
-
-  /**
-   * HTTP headers required for the action
-   */
-  headers: unknown;
-
-  /**
-   * Schema defining input parameters for the action
-   */
-  inputSchema: Array<ActionCreateParams.InputSchema>;
 
   /**
    * Unique identifier for the action
@@ -258,6 +199,17 @@ export interface ActionCreateParams {
   executeIf?: unknown;
 
   /**
+   * HTTP headers for the action (optional, defaults to empty object)
+   */
+  headers?: unknown;
+
+  /**
+   * Schema defining input parameters for the action (optional, defaults to empty
+   * array)
+   */
+  inputSchema?: Array<ActionCreateParams.InputSchema>;
+
+  /**
    * Action version number
    */
   version?: number;
@@ -275,80 +227,14 @@ export namespace ActionCreateParams {
   }
 }
 
-export interface ActionUpdateParams {
-  /**
-   * API endpoint URL or path
-   */
-  endpoint?: string;
-
-  /**
-   * Conditional execution rules (optional)
-   */
-  executeIf?: unknown;
-
-  /**
-   * HTTP headers required for the action
-   */
-  headers?: unknown;
-
-  /**
-   * Schema defining input parameters for the action
-   */
-  inputSchema?: Array<ActionUpdateParams.InputSchema>;
-
-  /**
-   * Unique identifier for the action
-   */
-  key?: string;
-
-  /**
-   * HTTP method for the action
-   */
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-
-  /**
-   * Human-readable action name
-   */
-  name?: string;
-
-  /**
-   * ID of the associated tool
-   */
-  toolId?: string;
-
-  /**
-   * Action version number
-   */
-  version?: number;
-}
-
-export namespace ActionUpdateParams {
-  export interface InputSchema {
-    description?: string;
-
-    name?: string;
-
-    required?: boolean;
-
-    type?: string;
-  }
-}
-
-export interface ActionExecuteParams {
-  /**
-   * Input parameters matching the action's inputSchema
-   */
-  inputs: unknown;
-}
+export interface ActionUpdateParams {}
 
 export declare namespace Actions {
   export {
     type ActionCreateResponse as ActionCreateResponse,
     type ActionRetrieveResponse as ActionRetrieveResponse,
     type ActionListResponse as ActionListResponse,
-    type ActionExecuteResponse as ActionExecuteResponse,
     type ActionCreateParams as ActionCreateParams,
     type ActionUpdateParams as ActionUpdateParams,
-    type ActionExecuteParams as ActionExecuteParams,
   };
 }
