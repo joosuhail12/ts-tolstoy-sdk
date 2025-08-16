@@ -850,6 +850,7 @@ export class TolstoyAPI {
   auth: API.Auth = new API.Auth(this);
   health: API.Health = new API.Health(this);
 }
+
 TolstoyAPI.Status = Status;
 TolstoyAPI.Organizations = Organizations;
 TolstoyAPI.Users = Users;
@@ -860,6 +861,7 @@ TolstoyAPI.ExecutionLogs = ExecutionLogs;
 TolstoyAPI.Webhooks = Webhooks;
 TolstoyAPI.Auth = Auth;
 TolstoyAPI.Health = Health;
+
 export declare namespace TolstoyAPI {
   export type RequestOptions = Opts.RequestOptions;
 
