@@ -9,23 +9,15 @@ const client = new TolstoyAPI({
 });
 
 describe('resource executionLogs', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.executionLogs.create({
       executionId: 'exec_xyz789',
       flowId: 'flow_abc123',
-      inputs: {
-        stepName: 'Send Slack Notification',
-        stepType: 'action',
-        config: {
-          actionKey: 'slack_send_message',
-          parameters: { channel: '#general', message: 'Workflow completed successfully' },
-        },
-        variables: { userId: 'user_123', timestamp: '2024-01-15T10:30:00Z' },
-        stepOutputs: {},
-      },
+      inputs: { channel: '#general', message: 'Workflow started', userId: 'user_123' },
       status: 'completed',
       stepKey: 'send_notification',
+      userId: 'user_abc123',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -36,29 +28,21 @@ describe('resource executionLogs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.executionLogs.create({
       executionId: 'exec_xyz789',
       flowId: 'flow_abc123',
-      inputs: {
-        stepName: 'Send Slack Notification',
-        stepType: 'action',
-        config: {
-          actionKey: 'slack_send_message',
-          parameters: { channel: '#general', message: 'Workflow completed successfully' },
-        },
-        variables: { userId: 'user_123', timestamp: '2024-01-15T10:30:00Z' },
-        stepOutputs: {},
-      },
+      inputs: { channel: '#general', message: 'Workflow started', userId: 'user_123' },
       status: 'completed',
       stepKey: 'send_notification',
-      error: { message: 'Channel not found', code: 'CHANNEL_NOT_FOUND', stack: 'Error stack trace...' },
+      userId: 'user_abc123',
+      error: { message: 'API rate limit exceeded', code: 'RATE_LIMIT', retryAfter: 3600 },
       outputs: { messageId: 'msg_456', timestamp: '2024-01-15T10:30:05Z', success: true },
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.executionLogs.retrieve('log_def456');
     const rawResponse = await responsePromise.asResponse();
@@ -70,7 +54,7 @@ describe('resource executionLogs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.executionLogs.update('log_def456', {});
     const rawResponse = await responsePromise.asResponse();
@@ -82,7 +66,7 @@ describe('resource executionLogs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.executionLogs.list();
     const rawResponse = await responsePromise.asResponse();
@@ -94,7 +78,7 @@ describe('resource executionLogs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.executionLogs.delete('log_def456');
     const rawResponse = await responsePromise.asResponse();

@@ -9,12 +9,12 @@ const client = new TolstoyAPI({
 });
 
 describe('resource tools', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.tools.create({
-      configuration: { baseUrl: 'https://hooks.slack.com', timeout: 5000, retries: 3 },
+      authType: 'apiKey',
+      baseUrl: 'https://hooks.slack.com/services',
       name: 'Slack Notifier',
-      type: 'notification',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,18 +25,16 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.tools.create({
-      configuration: { baseUrl: 'https://hooks.slack.com', timeout: 5000, retries: 3 },
+      authType: 'apiKey',
+      baseUrl: 'https://hooks.slack.com/services',
       name: 'Slack Notifier',
-      type: 'notification',
-      description: 'Send notifications to Slack channels',
-      version: '1.0.0',
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.tools.retrieve('tool_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -48,7 +46,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.tools.update('tool_abc123', {});
     const rawResponse = await responsePromise.asResponse();
@@ -60,7 +58,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.tools.list();
     const rawResponse = await responsePromise.asResponse();
@@ -72,7 +70,7 @@ describe('resource tools', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.tools.delete('tool_abc123');
     const rawResponse = await responsePromise.asResponse();

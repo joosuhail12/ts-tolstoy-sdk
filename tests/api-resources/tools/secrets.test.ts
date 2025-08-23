@@ -9,7 +9,7 @@ const client = new TolstoyAPI({
 });
 
 describe('resource secrets', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.tools.secrets.retrieve('tool_slack_123');
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource secrets', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -33,7 +33,7 @@ describe('resource secrets', () => {
     ).rejects.toThrow(TolstoyAPI.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.tools.secrets.list();
     const rawResponse = await responsePromise.asResponse();
@@ -45,7 +45,7 @@ describe('resource secrets', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.tools.secrets.delete('tool_slack_123');
     const rawResponse = await responsePromise.asResponse();
@@ -57,7 +57,7 @@ describe('resource secrets', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('store: only required params', async () => {
     const responsePromise = client.tools.secrets.store('tool_slack_123', {
       credentials: {
@@ -75,7 +75,7 @@ describe('resource secrets', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('store: required and optional params', async () => {
     const response = await client.tools.secrets.store('tool_slack_123', {
       credentials: {

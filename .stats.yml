@@ -1,4 +1,4 @@
-configured_endpoints: 58
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/pullse-inc%2Ftolstoy-api-2c95af82eae6856b7730094c8be3570993f4531047ddc5c82118e4b322613013.yml
-openapi_spec_hash: cb030caf6979f9a80090665d1ecebfde
-config_hash: a2108b415341102ec6836c9f23a10ce1
+configured_endpoints: 54
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/pullse-inc%2Ftolstoy-api-60a89bf3db305a2a91d9c8261d9cc236052f3c66a5585e6553b144585ebb12d8.yml
+openapi_spec_hash: fe52f131e1e64cf5c9fad0c3783c3c98
+config_hash: 1d5e0f06d8a83608750c4dc0b8ea3cad

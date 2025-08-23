@@ -9,9 +9,9 @@ const client = new TolstoyAPI({
 });
 
 describe('resource users', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
-    const responsePromise = client.users.create({ email: 'john.doe@example.com', name: 'John Doe' });
+    const responsePromise = client.users.create({ email: 'john.doe@example.com' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,17 +21,12 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
-    const response = await client.users.create({
-      email: 'john.doe@example.com',
-      name: 'John Doe',
-      profile: { department: 'Engineering', title: 'Software Engineer' },
-      role: 'member',
-    });
+    const response = await client.users.create({ email: 'john.doe@example.com' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.users.retrieve('user_abc123');
     const rawResponse = await responsePromise.asResponse();
@@ -43,7 +38,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.users.update('user_abc123', {});
     const rawResponse = await responsePromise.asResponse();
@@ -55,7 +50,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.users.list();
     const rawResponse = await responsePromise.asResponse();
@@ -67,7 +62,7 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.users.delete('user_abc123');
     const rawResponse = await responsePromise.asResponse();

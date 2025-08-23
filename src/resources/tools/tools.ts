@@ -2,7 +2,15 @@
 
 import { APIResource } from '../../core/resource';
 import * as AuthAPI from './auth';
-import { Auth, AuthDeleteResponse, AuthRetrieveResponse, AuthUpsertParams, AuthUpsertResponse } from './auth';
+import {
+  Auth,
+  AuthDeleteParams,
+  AuthDeleteResponse,
+  AuthRetrieveParams,
+  AuthRetrieveResponse,
+  AuthUpsertParams,
+  AuthUpsertResponse,
+} from './auth';
 import * as SecretsAPI from './secrets';
 import {
   SecretListResponse,
@@ -27,13 +35,9 @@ export class Tools extends APIResource {
    * @example
    * ```ts
    * const tool = await client.tools.create({
-   *   configuration: {
-   *     baseUrl: 'https://hooks.slack.com',
-   *     timeout: 5000,
-   *     retries: 3,
-   *   },
+   *   authType: 'apiKey',
+   *   baseUrl: 'https://hooks.slack.com/services',
    *   name: 'Slack Notifier',
-   *   type: 'notification',
    * });
    * ```
    */
@@ -100,19 +104,17 @@ export class Tools extends APIResource {
 export interface ToolCreateResponse {
   id?: string;
 
-  configuration?: unknown;
+  authType?: string;
+
+  baseUrl?: string;
 
   createdAt?: string;
 
-  description?: string;
-
   name?: string;
 
-  type?: string;
+  orgId?: string;
 
   updatedAt?: string;
-
-  version?: string;
 }
 
 export interface ToolRetrieveResponse {
@@ -157,57 +159,22 @@ export namespace ToolListResponse {
 
 export interface ToolCreateParams {
   /**
-   * Tool-specific configuration
+   * Authentication type (apiKey, oauth2, basic)
    */
-  configuration: unknown;
+  authType: string;
+
+  /**
+   * Base URL for the tool API
+   */
+  baseUrl: string;
 
   /**
    * Tool name
    */
   name: string;
-
-  /**
-   * Tool type/category
-   */
-  type: 'notification' | 'api' | 'database' | 'webhook' | 'email';
-
-  /**
-   * Tool description
-   */
-  description?: string;
-
-  /**
-   * Tool version
-   */
-  version?: string;
 }
 
-export interface ToolUpdateParams {
-  /**
-   * Tool-specific configuration
-   */
-  configuration?: unknown;
-
-  /**
-   * Tool description
-   */
-  description?: string;
-
-  /**
-   * Tool name
-   */
-  name?: string;
-
-  /**
-   * Tool type/category
-   */
-  type?: 'notification' | 'api' | 'database' | 'webhook' | 'email';
-
-  /**
-   * Tool version
-   */
-  version?: string;
-}
+export interface ToolUpdateParams {}
 
 Tools.Secrets = Secrets;
 Tools.Auth = Auth;
@@ -235,6 +202,8 @@ export declare namespace Tools {
     type AuthRetrieveResponse as AuthRetrieveResponse,
     type AuthDeleteResponse as AuthDeleteResponse,
     type AuthUpsertResponse as AuthUpsertResponse,
+    type AuthRetrieveParams as AuthRetrieveParams,
+    type AuthDeleteParams as AuthDeleteParams,
     type AuthUpsertParams as AuthUpsertParams,
   };
 }

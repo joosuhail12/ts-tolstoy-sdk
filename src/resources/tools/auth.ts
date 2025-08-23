@@ -7,41 +7,60 @@ import { path } from '../../internal/utils/path';
 
 export class Auth extends APIResource {
   /**
-   * Retrieves the authentication configuration for a specific tool within an
-   * organization. Sensitive values may be masked in the response.
+   * Retrieves authentication configuration(s) for a specific tool within an
+   * organization. Use configName query parameter to get a specific configuration, or
+   * omit to list all configurations.
    *
    * @example
    * ```ts
    * const auth = await client.tools.auth.retrieve('tool-123');
    * ```
    */
-  retrieve(toolID: string, options?: RequestOptions): APIPromise<AuthRetrieveResponse> {
-    return this._client.get(path`/tools/${toolID}/auth`, options);
+  retrieve(
+    toolID: string,
+    query: AuthRetrieveParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<AuthRetrieveResponse> {
+    return this._client.get(path`/tools/${toolID}/auth`, { query, ...options });
   }
 
   /**
-   * Removes the authentication configuration for a specific tool within an
-   * organization. This action also cleans up associated secrets and cache entries.
+   * Removes authentication configuration(s) for a specific tool within an
+   * organization. Use configName query parameter to delete a specific configuration,
+   * or use deleteAll=true to delete all configurations.
    *
    * @example
    * ```ts
    * const auth = await client.tools.auth.delete('tool-123');
    * ```
    */
-  delete(toolID: string, options?: RequestOptions): APIPromise<AuthDeleteResponse> {
-    return this._client.delete(path`/tools/${toolID}/auth`, options);
+  delete(
+    toolID: string,
+    params: AuthDeleteParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<AuthDeleteResponse> {
+    const { configName, deleteAll } = params ?? {};
+    return this._client.delete(path`/tools/${toolID}/auth`, { query: { configName, deleteAll }, ...options });
   }
 
   /**
    * Configures authentication settings (API Key or OAuth2) for a specific tool
-   * within an organization. This endpoint supports both creating new configurations
-   * and updating existing ones.
+   * within an organization. API Key auth requires headerName and headerValue. OAuth2
+   * auth requires clientId, clientSecret, and accessToken. A default callback URL is
+   * automatically added for OAuth2 configurations.
    *
    * @example
    * ```ts
    * const response = await client.tools.auth.upsert(
    *   'tool-123',
-   *   { config: {}, type: 'apiKey' },
+   *   {
+   *     config: {
+   *       headerName: 'Authorization',
+   *       headerValue: 'Bearer sk-1234567890abcdef',
+   *     },
+   *     name: 'production',
+   *     type: 'apiKey',
+   *   },
    * );
    * ```
    */
@@ -50,41 +69,55 @@ export class Auth extends APIResource {
   }
 }
 
-export interface AuthRetrieveResponse {
-  /**
-   * Unique identifier for the auth config
-   */
-  id: string;
+export type AuthRetrieveResponse = AuthRetrieveResponse.AuthConfigResponseDto | unknown;
 
-  /**
-   * Authentication configuration (sensitive values may be masked)
-   */
-  config: unknown;
+export namespace AuthRetrieveResponse {
+  export interface AuthConfigResponseDto {
+    /**
+     * Unique identifier for the auth config
+     */
+    id: string;
 
-  /**
-   * Creation timestamp
-   */
-  createdAt: string;
+    /**
+     * Authentication configuration (sensitive values may be masked)
+     */
+    config: unknown;
 
-  /**
-   * Organization ID
-   */
-  orgId: string;
+    /**
+     * Creation timestamp
+     */
+    createdAt: string;
 
-  /**
-   * Tool ID
-   */
-  toolId: string;
+    /**
+     * Whether this is the default configuration for the tool
+     */
+    isDefault: boolean;
 
-  /**
-   * Type of authentication configuration
-   */
-  type: 'apiKey' | 'oauth2';
+    /**
+     * Configuration name
+     */
+    name: string;
 
-  /**
-   * Last update timestamp
-   */
-  updatedAt: string;
+    /**
+     * Organization ID
+     */
+    orgId: string;
+
+    /**
+     * Tool ID
+     */
+    toolId: string;
+
+    /**
+     * Type of authentication configuration
+     */
+    type: 'apiKey' | 'oauth2';
+
+    /**
+     * Last update timestamp
+     */
+    updatedAt: string;
+  }
 }
 
 export interface AuthDeleteResponse {
@@ -116,6 +149,16 @@ export interface AuthUpsertResponse {
   createdAt: string;
 
   /**
+   * Whether this is the default configuration for the tool
+   */
+  isDefault: boolean;
+
+  /**
+   * Configuration name
+   */
+  name: string;
+
+  /**
    * Organization ID
    */
   orgId: string;
@@ -136,16 +179,67 @@ export interface AuthUpsertResponse {
   updatedAt: string;
 }
 
+export interface AuthRetrieveParams {
+  /**
+   * Name of specific configuration to retrieve (optional)
+   */
+  configName?: string;
+}
+
+export interface AuthDeleteParams {
+  /**
+   * Name of specific configuration to delete (optional)
+   */
+  configName?: string;
+
+  /**
+   * Delete all configurations for the tool (optional)
+   */
+  deleteAll?: boolean;
+}
+
 export interface AuthUpsertParams {
   /**
-   * Authentication configuration JSON
+   * Authentication configuration (structure depends on type)
    */
-  config: unknown;
+  config: AuthUpsertParams.APIKeyConfiguration | AuthUpsertParams.OAuth2Configuration;
+
+  /**
+   * Name for this configuration (e.g., "production", "staging", "development")
+   */
+  name: string;
 
   /**
    * Type of authentication configuration
    */
   type: 'apiKey' | 'oauth2';
+
+  /**
+   * Whether this should be the default configuration for the tool
+   */
+  isDefault?: boolean;
+}
+
+export namespace AuthUpsertParams {
+  export interface APIKeyConfiguration {
+    headerName: string;
+
+    headerValue: string;
+  }
+
+  export interface OAuth2Configuration {
+    accessToken: string;
+
+    clientId: string;
+
+    clientSecret: string;
+
+    expiresAt?: string;
+
+    refreshToken?: string;
+
+    scopes?: string;
+  }
 }
 
 export declare namespace Auth {
@@ -153,6 +247,8 @@ export declare namespace Auth {
     type AuthRetrieveResponse as AuthRetrieveResponse,
     type AuthDeleteResponse as AuthDeleteResponse,
     type AuthUpsertResponse as AuthUpsertResponse,
+    type AuthRetrieveParams as AuthRetrieveParams,
+    type AuthDeleteParams as AuthDeleteParams,
     type AuthUpsertParams as AuthUpsertParams,
   };
 }
